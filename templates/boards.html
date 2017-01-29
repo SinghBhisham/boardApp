@@ -1,0 +1,18 @@
+<div class="row">
+            <div class="col-lg-12">
+                <h3 class="title"> Your Boards </h3>
+            </div>
+        </div>
+<div class="row ">
+    
+        <div class="col-md-3 col-sm-6 boardCtr" *ngFor="let board of boards">
+            <div class="board" style.background-color="{{board.bgcolor}}">
+                <h4>{{board.name}}</h4>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 boardCtr" >
+            <div class="board" >
+                <h4>Create new Board</h4>
+            </div>
+        </div>
+</div>
