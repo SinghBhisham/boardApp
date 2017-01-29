@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {board} from './board';
+import {board} from '../schemas/board';
 import {BoardService} from '../services/boards.service';
 
 @Component({

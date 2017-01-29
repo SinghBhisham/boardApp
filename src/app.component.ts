@@ -6,4 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: "../templates/app.html",
   styleUrls: ["../public/css/app.css"]
 })
-export class AppComponent  { name = 'Angular 2'; }
+export class AppComponent  { }

@@ -1,0 +1,11 @@
+<h2 *ngIf="board"> Detail {{board.name}}</h2>
+<div class="list-wrapper"  *ngFor="let list of lists">
+    <div class="list">
+            <div class="list-header"><span>{{list.name}}</span></div>
+            <div class="list-cards">
+                <div class="list-card" *ngFor="let card of list.cards">
+                    <span class="data">{{card.data}}</span>
+                </div>
+            </div>
+    </div>
+</div>

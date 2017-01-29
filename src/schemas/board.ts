@@ -1,5 +1,5 @@
 export class board{
-    id: number;
+    id: string;
     name: string;
     isFavourite:boolean;
     bgcolor: string;

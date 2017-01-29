@@ -17,10 +17,35 @@
         margin: 0;
         font-weight: bold;
     }
+    &.createNewBoard{
+            padding: 36px 20px;
+            text-align: center;
+            color: #fcf8e3;
+            overflow: visible;
+            .btn{
+                color: inherit;
+                background: transparent;
+                border: 0;
+                box-shadow: none;
+            }
+    }
 }
 .boardCtr{
     padding: 10px 10px;
 }
 .title{
     margin: 30px 0 5px 0;
+}
+.dropdown-menu{
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 9px;
+    padding: 10px;
+    .createBtn{
+        margin-top: 13px;
+        padding: 7px 25px;
+        font-size: 1.2em;
+        font-weight: bold;
+    }   
 }

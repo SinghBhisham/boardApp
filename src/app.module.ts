@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
 import { BoardsComponent } from './boards/boards.component';
+import { ListsComponent } from './lists/lists.component';
 import { BoardService } from './services/boards.service';
+import { ListsService } from './services/lists.service';
+import { StorageService } from  './services/storage.service';
+import { UserService } from './services/user.service';
 
 import { AppRoutingModule }     from './app-routing.module';
-
 
 @NgModule({
   imports: [
@@ -18,10 +21,14 @@ import { AppRoutingModule }     from './app-routing.module';
   ],
   declarations: [ 
     AppComponent,
-    BoardsComponent
+    BoardsComponent,
+    ListsComponent
   ],
   providers: [
-    BoardService
+    BoardService,
+    ListsService,
+    StorageService,
+    UserService
   ],
   bootstrap:    [ AppComponent ]
 })
