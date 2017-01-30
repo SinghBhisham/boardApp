@@ -3,38 +3,6 @@ import {board} from '../schemas/board';
 import {UserService} from './user.service';
 import {StorageService} from './storage.service';
 
-const boards: board[] = [{
-    id: "b-123",
-    name: "board1",
-    bgcolor: "green",
-    isFavourite: false
-
-},{
-    id: "b-1232",
-    name: "board2",
-    bgcolor: "gray",
-    isFavourite: false
-
-},{
-    id: "b-1233",
-    name: "board3",
-    bgcolor: "green",
-    isFavourite: false
-
-},{
-    id: "b-1234",
-    name: "board4",
-    bgcolor: "red",
-    isFavourite: false
-
-},{
-    id: "b-1235",
-    name: "board5",
-    bgcolor: "blue",
-    isFavourite: false
-
-}];
-
 @Injectable()
 export class BoardService{
     constructor(
@@ -43,7 +11,7 @@ export class BoardService{
     ){}
     getBoards(): Promise<board[]>{
         return this.userService.getCurrentUser().then(user=>{
-            return this.store.get("boards:"+user.id);
+            return this.store.get("boards:"+user.id) || [];
         });
     }
     createBoard(b:board): Promise<void>{
@@ -56,6 +24,10 @@ export class BoardService{
     getBoard(id: string): Promise<board> {
         return this.getBoards()
                .then(boards => boards.find(board => board.id === id));
-  }
+    }
+    saveBoards(boards: board[]): Promise<any>{
+      return this.userService.getCurrentUser().then(user=>{
+          return this.store.set("boards:"+user.id, boards);
+      })
+    }
 }
-

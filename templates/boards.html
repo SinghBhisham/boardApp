@@ -4,7 +4,7 @@
             </div>
         </div>
 <div class="row ">
-    
+
         <div class="col-md-3 col-sm-6 boardCtr" *ngFor="let board of boards">
             <div class="board" [routerLink]="['/boards', board.id]" style.background-color="{{board.bgcolor}}">
                 <h4>{{board.name}}</h4>
@@ -13,15 +13,15 @@
         <div class="col-md-3 col-sm-6 boardCtr dropdown" >
             <div class="board createNewBoard"  id="createBoardDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 <h4>Create new Board</h4>
-                
+
             </div>
             <div class="dropdown-menu" aria-labelledby="createBoardDD">
                 <div class="dropdown-header text-center">Create Board</div>
                 <div role="separator" class="divider"></div>
                 <div class="">
-                    <form>
+                    <form [formGroup]="boardForm" novalidate (ngSubmit)="createBoard(boardForm.value, boardForm.valid)">
                         <label >Title</label>
-                        <input class="form-control" type="text"/>
+                        <input class="form-control" type="text" formControlName="name" maxlength="25"/>
                         <button type="submit" class="btn btn-success createBtn">Create</button>
                     </form>
                 </div>

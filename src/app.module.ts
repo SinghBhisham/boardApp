@@ -1,6 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule}    from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent }  from './app.component';
@@ -10,6 +10,7 @@ import { BoardService } from './services/boards.service';
 import { ListsService } from './services/lists.service';
 import { StorageService } from  './services/storage.service';
 import { UserService } from './services/user.service';
+import { ColorService } from './services/color.service';
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -17,9 +18,10 @@ import { AppRoutingModule }     from './app-routing.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  declarations: [ 
+  declarations: [
     AppComponent,
     BoardsComponent,
     ListsComponent
@@ -28,7 +30,8 @@ import { AppRoutingModule }     from './app-routing.module';
     BoardService,
     ListsService,
     StorageService,
-    UserService
+    UserService,
+    ColorService
   ],
   bootstrap:    [ AppComponent ]
 })
