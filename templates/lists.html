@@ -1,11 +1,23 @@
-<h2 *ngIf="board"> Detail {{board.name}}</h2>
-<div class="list-wrapper"  *ngFor="let list of lists">
-    <div class="list">
-            <div class="list-header"><span>{{list.name}}</span></div>
-            <div class="list-cards">
-                <div class="list-card" *ngFor="let card of list.cards">
-                    <span class="data">{{card.data}}</span>
-                </div>
-            </div>
-    </div>
+<div class="board-canvas-ctr">
+<div class="board-canvas" style.width="{{(lists?(lists.length+1):3)*300}}px">
+  <h2 *ngIf="board"> Detail {{board.name}}</h2>
+  <div class="list-wrapper"  *ngFor="let list of lists">
+      <div class="list">
+              <div class="list-header"><span>{{list.name}}</span></div>
+              <div class="list-cards">
+                  <div class="list-card" *ngFor="let card of list.cards">
+                      <span class="data">{{card.data}}</span>
+                  </div>
+              </div>
+      </div>
+  </div>
+  <div class="list-wrapper createList">
+    <form [formGroup]="listForm" novalidate (ngSubmit)="createList(listForm.value, listForm.valid)">
+      <input type="text" formControlName="name" class="form-control" placeholder="Give it a name!!!" maxlength="25" required>
+      <div class="submit-wrapper">
+        <button type="submit" class="btn btn-success createListBtn">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
 </div>

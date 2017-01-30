@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import {board} from '../schemas/board';
-import {BoardService} from '../services/boards.service';
-import {ColorService } from '../services/color.service';
+import { board } from '../schemas/board';
+import { BoardService } from '../services/boards.service';
+import { ColorService } from '../services/color.service';
 
 declare var $: any
 @Component({

@@ -1,20 +1,16 @@
 import {Injectable} from '@angular/core';
 import {list} from '../schemas/list';
-
-
-const lists: list[] = [{
-    parentid: "b-123",
-    name: "board1",
-    id: "l-123",
-    cards: [{
-        data: 'card1'
-    }]
-}];
+import {StorageService} from './storage.service';
 
 @Injectable()
 export class ListsService{
+    constructor(
+      private store: StorageService
+    ){}
     getLists(id:string): Promise<list[]>{
-        return Promise.resolve(lists);
+        return Promise.resolve(this.store.get("lists:"+id)||[]);
+    }
+    saveLists(id:string, lists: list[]): Promise<void>{
+        return Promise.resolve(this.store.set(id, lists));
     }
 }
-
