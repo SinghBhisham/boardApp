@@ -14,6 +14,8 @@ var gulp = require("gulp"),
     gulpCopy = require('gulp-copy'),
     clean = require('gulp-clean'),
     del = require('del'),
+    template = require('gulp-template')
+
     concat = require("gulp-concat");
 
 gulp.task("compile-ts", function(){
@@ -83,17 +85,36 @@ gulp.task("setup",["compile-ts","compile-styles","minify-images"], function(){
 gulp.task("clean", function(){
     return del(config.cleanPath);
 });
+
 gulp.task("copy", function(){
     return gulp
     .src(config.pathsToCopy)
     .pipe(gulpCopy(config.distPath));
 });
 
-gulp.task("build", ["clean", "setup", "copy"],  function(){
+gulp.task("build", ["clean", "setup", "copy", "indexbuild"],  function(){
     return gulp;
 });
 
-gulp.task('watch', function () {
+gulp.task("cleanindex", function(){
+    return del("./index.html");
+});
+
+gulp.task("index", ['cleanindex'], function(){
+    gulp.src(config.indexSrcPath)
+            .pipe(template({basepath: "/" }))
+            .pipe(ext_replace(".html"))
+            .pipe(gulp.dest("./"));
+});
+
+gulp.task("indexbuild", function(){
+    gulp.src(config.indexSrcPath)
+            .pipe(template({basepath:config.basepath }))
+            .pipe(ext_replace(".html"))
+            .pipe(gulp.dest(config.distPath));
+})
+
+gulp.task('watch',['index', 'compile-ts'], function () {
     gulp.watch(config.TsFilePath, ['compile-ts']);
     gulp.watch(config.stylesFilePath, ['compile-styles']);
     gulp.watch(config.imagesFilePath, ['minify-images']);

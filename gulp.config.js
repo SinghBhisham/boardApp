@@ -6,11 +6,10 @@ module.exports = function() {
         "./app/**/*",
         "./public/**/*",
         "./templates/**/*",
-        "./index.html",
         "./node_modules/**/*",
         "./systemjs.config.js"
     ],
-    indexSrcPath: "./index.html",
+    indexSrcPath: "./index.template",
     indexOutputPath: "./dist",
     TsFilePath: "./src/**/*.ts",
     tsOutputPath: "./app/",
@@ -25,7 +24,8 @@ module.exports = function() {
     bootstrapFontsPath: "./node_modules/bootstrap/fonts/*",
     bootstrapFontsDestPath: "./lib/bootstrap/fonts",
     jQueryPath: "./node_modules/jquery/dist/jquery.min.js",
-    jQueryDestPath: "./lib/jquery"
+    jQueryDestPath: "./lib/jquery",
+    basepath: "/samples/boardapp/"
   }
 
   return config;
