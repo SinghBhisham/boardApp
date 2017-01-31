@@ -14,8 +14,8 @@ var gulp = require("gulp"),
     gulpCopy = require('gulp-copy'),
     clean = require('gulp-clean'),
     del = require('del'),
-    template = require('gulp-template')
-
+    template = require('gulp-template'),
+    sequence = require('gulp-sequence'),
     concat = require("gulp-concat");
 
 gulp.task("compile-ts", function(){
@@ -76,7 +76,7 @@ gulp.task("setup",["compile-ts","compile-styles","minify-images"], function(){
       .pipe(gulp.dest(config.bootstrapCSSDestPath));
 
   gulp.src(config.bootstrapFontsPath)
-      .pipe(gulp.dest(config.bootstrapFontsDestPath))
+      .pipe(gulp.dest(config.bootstrapFontsDestPath));
 
   gulp.src(config.jQueryPath)
       .pipe(gulp.dest(config.jQueryDestPath));
@@ -86,13 +86,21 @@ gulp.task("clean", function(){
     return del(config.cleanPath);
 });
 
+gulp.task("init", function(){
+    return sequence('index', 'compile-ts', 'compile-styles');
+});
+
+gulp.task("initbuild", function(){
+    return sequence("clean", "setup", "copy", "indexbuild");
+});
+
 gulp.task("copy", function(){
     return gulp
     .src(config.pathsToCopy)
     .pipe(gulpCopy(config.distPath));
 });
 
-gulp.task("build", ["clean", "setup", "copy", "indexbuild"],  function(){
+gulp.task("build", ['initbuild'],  function(){
     return gulp;
 });
 
@@ -112,12 +120,12 @@ gulp.task("indexbuild", function(){
             .pipe(template({basepath:config.basepath }))
             .pipe(ext_replace(".html"))
             .pipe(gulp.dest(config.distPath));
-})
+});
 
-gulp.task('watch',['index', 'compile-ts'], function () {
+gulp.task('watch', ['init'], function () {
     gulp.watch(config.TsFilePath, ['compile-ts']);
     gulp.watch(config.stylesFilePath, ['compile-styles']);
-    gulp.watch(config.imagesFilePath, ['minify-images']);
+    //gulp.watch(config.imagesFilePath, ['minify-images']);
 });
 
 gulp.task('default', ['watch']);
