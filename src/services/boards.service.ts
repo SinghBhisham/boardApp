@@ -30,4 +30,14 @@ export class BoardService{
           return this.store.set("boards:"+user.id, boards);
       })
     }
+    searchBoards(q: string): Promise<board[]>{
+        return this.getBoards().then(boards=>{
+          if(!q.length){
+            return boards;
+          }
+          return boards.filter(b=>{
+            return b.name.match(new RegExp("^.*"+q+".*$", 'gi'));
+          });
+        });
+    }
 }

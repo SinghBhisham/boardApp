@@ -25,7 +25,7 @@ module.exports = function() {
     bootstrapFontsDestPath: "./lib/bootstrap/fonts",
     jQueryPath: "./node_modules/jquery/dist/jquery.min.js",
     jQueryDestPath: "./lib/jquery",
-    basepath: "/samples/boardapp/"
+    basepath: "/boardapp/"
   }
 
   return config;

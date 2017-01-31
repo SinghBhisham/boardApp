@@ -2,7 +2,17 @@
   <div class="header">
       <div class="row">
           <div class="col-md-12 title">
-              <div class="text-center title-link" [routerLink]="['/boards']">Board App</div>
+            <div class="text-center title-link" [routerLink]="['/boards']">Board App</div>
+            <div>
+            <form class="search" method="post" action="index.html" autocomplete="off">
+                <input type="text" name="q" placeholder="Search..." (keyup)="search($event)" (focus)="search($event)" />
+                <ul class="results" >
+                  <li> <h4> Matching Boards </h4></li>
+                  <li *ngFor="let board of boardResults"><a [routerLink]="['/boards', board.id]">{{board.name}}</a></li>
+                </ul>
+            </form>
+          </div>
+
           </div>
       </div>
   </div>
