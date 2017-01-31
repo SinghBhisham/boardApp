@@ -7,6 +7,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { board } from '../schemas/board';
 import { list } from '../schemas/list';
+import { card } from '../schemas/card';
 import { BoardService } from '../services/boards.service';
 import { ListsService } from '../services/lists.service';
 
@@ -23,6 +24,9 @@ export class ListsComponent implements OnInit{
     lists: list[];
     public listForm = this.fb.group({
       name: ["", Validators.required]
+    });
+    public cardForm = this.fb.group({
+      val: ["", Validators.required]
     });
     constructor(
         private router: Router,
@@ -44,16 +48,28 @@ export class ListsComponent implements OnInit{
     createList(data:any, valid:boolean): void{
       if(!valid)
         return;
-      console.log('came here', data);
       let l: list = {
-        id: "b-"+new Date().getTime(),
+        id: "l-"+new Date().getTime(),
         name: data.name,
-        parentid: this.board.id
+        parentid: this.board.id,
+        cards: []
       }
       this.lists.push(l);
       this.listService.saveLists("lists:"+this.board.id, this.lists).then(b=>{
           this.listForm.reset();
       });
+    }
 
+    createCard(l: list, data:any, valid:boolean): void{
+      if(!valid)
+        return;
+      let c: card = {
+        id: "c-"+new Date().getTime(),
+        data: data.val
+      }
+      l.cards.push(c);
+      this.listService.saveLists("lists:"+this.board.id, this.lists).then(b=>{
+          this.cardForm.reset();
+      });
     }
 }

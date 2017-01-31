@@ -1,5 +1,4 @@
-.board-canvas-ctr{
-}
+
 .list-wrapper {
     width: 270px;
     margin: 0 5px;
@@ -62,4 +61,11 @@
   .submit-wrapper{
     padding: 5px 0;
   }
+}
+
+.addCardWrapper{
+    padding: 0 7px;
+    .submit-wrapper{
+            padding: 7px 1px;
+    }
 }
