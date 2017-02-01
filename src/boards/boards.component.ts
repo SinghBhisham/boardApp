@@ -7,7 +7,7 @@ import { board } from '../schemas/board';
 import { BoardService } from '../services/boards.service';
 import { ColorService } from '../services/color.service';
 
-declare var $: any
+declare var $: any;
 @Component({
     moduleId: module.id,
     selector: "boards",

@@ -21,7 +21,7 @@
                 <div class="">
                     <form [formGroup]="boardForm" novalidate (ngSubmit)="createBoard(boardForm.value, boardForm.valid)">
                         <label >Title</label>
-                        <input class="form-control" type="text" formControlName="name" placeholder="Give it a name!!!" maxlength="25"/>
+                        <input class="form-control" type="text" formControlName="name" placeholder='Like "Goa Plan"' maxlength="25"/>
                         <button type="submit" class="btn btn-success createBtn">Create</button>
                     </form>
                 </div>

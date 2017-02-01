@@ -11,6 +11,8 @@ import { card } from '../schemas/card';
 import { BoardService } from '../services/boards.service';
 import { ListsService } from '../services/lists.service';
 
+declare var $: any;
+
 @Component({
     moduleId: module.id,
     selector: "lists",
@@ -68,6 +70,12 @@ export class ListsComponent implements OnInit{
         data: data.val
       }
       l.cards.push(c);
+      this.listService.saveLists("lists:"+this.board.id, this.lists).then(b=>{
+          this.cardForm.reset();
+      });
+    }
+    public editCard(c: card, e: any): void{
+      c.data = $(e.target).siblings('textarea').val();
       this.listService.saveLists("lists:"+this.board.id, this.lists).then(b=>{
           this.cardForm.reset();
       });

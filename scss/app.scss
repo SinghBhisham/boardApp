@@ -9,15 +9,22 @@
     height:calc(100% - 40px);
   }
 }
+@media only screen and (max-width: 767px) {
+  .header .title{
+    margin-bottom: 7px;
+  }
+  .header{
+    text-align: center;
+  }
+}
 .header{
-  height: 40px;
   background-color: rgb(2, 106, 167);
   padding: 7px;
   .title
   {
       font-size: 18px;
       color: white;
-      font-weight: bold;
+      font-weight: 800;
       .title-link{
             margin: 0 20px;
         cursor: pointer;
@@ -31,9 +38,6 @@
   overflow-x: auto;
 }
 
-.header  div{
-  display: inline-block;
-}
 
 
 a {
@@ -60,7 +64,7 @@ input {
 
 .search {
     position: relative;
-    margin: 0 auto;
+    margin: 0;
     width: 300px;
 }
 
@@ -76,10 +80,10 @@ input {
     outline: none;
 }
 
-.search input:focus + .results { display: block }
+//.search input:focus + .results { display: block }
 
 .search .results {
-    display: none;
+    //display: none;
     position: absolute;
     top: 35px;
     left: 0;

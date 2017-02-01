@@ -5,13 +5,19 @@
       <div class="list">
               <div class="list-header"><span >{{list.name}}</span></div>
               <div class="list-cards">
-                  <div class="list-card" *ngFor="let card of list.cards">
-                      <span class="data">{{card.data}}</span>
+                  <div class="list-card dropdown editCardDD" *ngFor="let card of list.cards">
+                      <div  id="{{card.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" ><span class="data">{{card.data}}</span> <span class="glyphicon glyphicon-edit editCard"></span></div>
+                      <div class="dropdown-menu" aria-labelledby="editCardDD">
+                          <div class="">
+                                  <textarea  class="form-control" value="{{card.data}}" maxlength="256" required ></textarea>
+                                  <button type="submit" class="btn btn-success saveCardBtn" (click)="editCard(card, $event)">Save</button>
+                          </div>
+                      </div>
                   </div>
               </div>
               <div class="addCardWrapper">
                 <form [formGroup]="cardForm" novalidate (ngSubmit)="createCard(list, cardForm.value, cardForm.valid)">
-                  <textarea formControlName="val" class="form-control" placeholder="Add a Card" maxlength="256" required></textarea>
+                  <textarea formControlName="val" class="form-control" placeholder="Add a Card..." maxlength="256" required></textarea>
                   <div class="submit-wrapper">
                     <button type="submit" class="btn btn-success createCardBtn">Create</button>
                   </div>
@@ -21,7 +27,7 @@
   </div>
   <div class="list-wrapper createList">
     <form [formGroup]="listForm" novalidate (ngSubmit)="createList(listForm.value, listForm.valid)">
-      <input type="text" formControlName="name" class="form-control" placeholder="Give it a name!!!" maxlength="25" required>
+      <input type="text" formControlName="name" class="form-control" placeholder="Add a List..." maxlength="25" required>
       <div class="submit-wrapper">
         <button type="submit" class="btn btn-success createListBtn">Create</button>
       </div>
