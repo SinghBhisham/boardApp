@@ -6,7 +6,6 @@
   bottom: 0;
   .content{
     padding: 30px;
-    height:calc(100% - 40px);
   }
 }
 @media only screen and (max-width: 767px) {
@@ -16,10 +15,18 @@
   .header{
     text-align: center;
   }
+  .search{
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  margin: 0;
 }
 .header{
   background-color: rgb(2, 106, 167);
   padding: 7px;
+  position: relative;
+  z-index: 10;
   .title
   {
       font-size: 18px;
@@ -64,7 +71,6 @@ input {
 
 .search {
     position: relative;
-    margin: 0;
     width: 300px;
 }
 
