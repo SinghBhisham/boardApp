@@ -1,3 +1,4 @@
+//array of hard coded colors for board background
 let colors: string [] = [
   "#4E74F0",
   "#E44929",
@@ -12,7 +13,14 @@ let colors: string [] = [
   "#DB9400",
   "#008930"
 ];
+/*
+ColorService
+exposes getRandomColor
+*/
 export class ColorService{
+  /*
+  getRandomColor: returns array of colors code
+  */
   getRandomColor(): string{
     let rnd:number = Math.floor(Math.random()*colors.length);
     return colors[rnd];

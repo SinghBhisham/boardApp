@@ -9,6 +9,9 @@ const u1: user = {
 }
 @Injectable()
 export class UserService{
+    /*
+    getCurrentUser: returns the Promise for the loggedIn user
+    */
     getCurrentUser(): Promise<user>{
         return Promise.resolve(u1);//currently returning hard-coded user
     } 
