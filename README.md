@@ -21,9 +21,12 @@ npm run setup
 
 ```
 
-npm run start
+npm start
+```
+
+#### Run Tests
+
+```
+npm test
 
 
-#### Build the app
-
-gulp build
