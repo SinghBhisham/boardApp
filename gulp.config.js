@@ -7,11 +7,12 @@ module.exports = function() {
         "./public/**/*",
         "./templates/**/*",
         "./node_modules/**/*",
-        "./systemjs.config.js"
+        "./systemjs.config.js",
+        "./systemjs.config.extras.js"
     ],
     indexSrcPath: "./index.template",
     indexOutputPath: "./dist",
-    TsFilePath: "./src/**/*.ts",
+    TsFilePath: ["./src/**/*.ts","./testing/**/*.ts"],
     tsOutputPath: "./app/",
     stylesFilePath: "./scss/*.scss",
     cssOutputPath: "./public/css/",

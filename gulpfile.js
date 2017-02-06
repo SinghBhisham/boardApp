@@ -15,7 +15,7 @@ var gulp = require("gulp"),
     clean = require('gulp-clean'),
     del = require('del'),
     template = require('gulp-template'),
-    sequence = require('gulp-sequence'),
+    sequence = require('run-sequence'),
     concat = require("gulp-concat");
 
 gulp.task("compile-ts", function(){
@@ -83,15 +83,16 @@ gulp.task("setup",["compile-ts","compile-styles","minify-images"], function(){
 });
 
 gulp.task("clean", function(){
+    console.log('came here');
     return del(config.cleanPath);
 });
 
-gulp.task("init", function(){
-    return sequence('index', 'compile-ts', 'compile-styles');
+gulp.task("init", function(cb){
+    return sequence('index', 'compile-ts', 'compile-styles', cb);
 });
 
-gulp.task("initbuild", function(){
-    return sequence("clean", "setup", "copy", "indexbuild");
+gulp.task("initbuild", function(cb){
+    return sequence("clean", "setup", "copy", "indexbuild", cb);
 });
 
 gulp.task("copy", function(){

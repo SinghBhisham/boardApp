@@ -16,7 +16,7 @@ export class BoardService{
     }
     createBoard(b:board): Promise<void>{
         return this.userService.getCurrentUser().then(user=>{
-            let boards: board[]  =<board[]> this.store.get("boards:"+user.id);
+            let boards: board[]  =<board[]> this.store.get("boards:"+user.id) || [];
             boards.push(b);
             return this.store.set("boards:"+user.id, boards);
         })

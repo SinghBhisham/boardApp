@@ -6,11 +6,11 @@ export class StorageService {
     /*
     set : set value at key
     */
-    set(key: string, value: any) {
+    set(key: string, value: any) : any{
         if (value) {
             value = JSON.stringify(value);
         }
-        localStorage.setItem(key, value);
+        return  localStorage.setItem(key, value);
     }
 
     /*
